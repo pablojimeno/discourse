@@ -6,4 +6,11 @@
   @namespace Discourse
   @module Discourse
 **/
-Discourse.BasicTopicListComponent = Ember.Component.extend({});
+Discourse.DiscourseBasicTopicListComponent = Ember.Component.extend({
+
+  init: function() {
+    this._super();
+    this.set('sortOrder', Discourse.SortOrder.create());
+  }
+
+});
