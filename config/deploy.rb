@@ -35,7 +35,7 @@ set :user, 'deployer'
 set :use_sudo, false
 set :rails_env, :production
 
-server 'http://discourse.staging.xprs.es/', :web, :app, :db, primary: true
+server 'discourse.staging.xprs.es', :web, :app, :db, primary: true
 
 # Application Settings
 set :application, 'discourse'
