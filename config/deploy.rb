@@ -31,7 +31,7 @@ set :deploy_type, :deploy
 default_run_options[:pty] = true
 
 # Server Settings
-set :user, 'admin'
+set :user, 'deployer'
 set :use_sudo, false
 set :rails_env, :production
 
