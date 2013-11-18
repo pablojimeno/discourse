@@ -23,6 +23,7 @@ set :repository, 'git@github.com:pablojimeno/discourse.git'
 set :deploy_via, :remote_cache
 set :branch, fetch(:branch, 'testing')
 set :scm, :git
+default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 ssh_options[:port] = 22113
 
