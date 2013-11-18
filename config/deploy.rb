@@ -15,7 +15,6 @@ load "config/recipes/thin"
 load "config/recipes/postgresql"
 load "config/recipes/redis"
 load "config/recipes/rbenv"
-load "config/recipes/secret"
 load "config/recipes/check"
 
 # Repo Settings
