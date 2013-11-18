@@ -17,7 +17,7 @@ server {
   gzip_min_length 1000;
   gzip_types application/json text/css application/x-javascript;
 
-  server_name discussion.wikiwheelchair.cc;
+  server_name staging.discourse.xprs.es www.staging.discourse.xprs.es discourse.staging.xprs.es;
 
   sendfile on;
 
@@ -31,6 +31,11 @@ server {
 
   location / {
     root $public;
+    proxy_pass http://10.10.2.113:80;
+
+    location ~* \.(js|css|jpg|jpeg|gif|png|svg|ico|pdf|html|htm)$ {
+      proxy_pass http://10.10.2.113:80;
+    }
 
     location ~ ^/assets/ {
       expires 1y;
