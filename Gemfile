@@ -102,7 +102,7 @@ gem 'omniauth-cas'
 gem 'oj'
 gem 'pg'
 gem 'rake'
-
+gem "capistrano", "~> 2.15.5"
 
 gem 'rest-client'
 gem 'rinku'
