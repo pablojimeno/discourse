@@ -21,11 +21,10 @@ load "config/recipes/check"
 # You should change this to your fork of discourse
 set :repository, 'git@github.com:pablojimeno/discourse.git'
 set :deploy_via, :remote_cache
-set :branch, fetch(:branch, 'testing')
+set :branch, fetch(:branch, 'staging')
 set :scm, :git
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
-ssh_options[:port] = 22113
 
 # General Settings
 set :deploy_type, :deploy
@@ -36,7 +35,7 @@ set :user, 'deployer'
 set :use_sudo, false
 set :rails_env, :production
 
-server 'discourse.staging.xprs.es', :web, :app, :db, primary: true
+server '162.243.105.95', :web, :app, :db, primary: true
 
 # Application Settings
 set :application, 'discourse'
