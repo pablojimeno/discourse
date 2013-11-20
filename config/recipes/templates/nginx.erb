@@ -4,10 +4,10 @@ types {
 }
 
 upstream discourse {
-  server unix:/var/www/<%= application %>/tmp/sockets/thin.0.sock;
-  server unix:/var/www/<%= application %>/tmp/sockets/thin.1.sock;
-  server unix:/var/www/<%= application %>/tmp/sockets/thin.2.sock;
-  server unix:/var/www/<%= application %>/tmp/sockets/thin.3.sock;
+  server unix:<%= deploy_to %>/tmp/sockets/thin.0.sock;
+  server unix:<%= deploy_to %>/tmp/sockets/thin.1.sock;
+  server unix:<%= deploy_to %>/tmp/sockets/thin.2.sock;
+  server unix:<%= deploy_to %>/tmp/sockets/thin.3.sock;
 }
 
 server {
@@ -27,7 +27,7 @@ server {
   client_max_body_size 2m;
 
   # path to discourse's public directory
-  set $public /var/www/discourse/public;
+  set $public <%= deploy_to %>/public;
 
   location / {
     root $public;

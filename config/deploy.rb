@@ -39,7 +39,7 @@ server '162.243.105.95', :web, :app, :db, primary: true
 
 # Application Settings
 set :application, 'discourse'
-set :deploy_to, "/var/www/#{application}"
+set :deploy_to, "/home/#{user}/apps/#{application}"
 
 # Perform an initial bundle
 after "deploy:setup" do
