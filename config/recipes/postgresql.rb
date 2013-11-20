@@ -28,7 +28,7 @@ namespace :pg do
   task :first_seed, roles: :db do
     run "cd #{current_path} && psql -d discourse_production < pg_dumps/production-image.sql"
   end
-  after "deploy:setup", "pg:seed"
+  after "deploy:setup", "pg:first_seed"
 
   # Migrate the database with each deployment
   after  'deploy:update_code', 'deploy:migrate'
