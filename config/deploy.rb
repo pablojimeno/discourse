@@ -35,7 +35,7 @@ set :user, 'deployer'
 set :use_sudo, false
 set :rails_env, :production
 
-server '162.243.105.95', :web, :app, :db, primary: true
+server '162.243.100.232', :web, :app, :db, primary: true
 
 # Application Settings
 set :application, 'discourse'
