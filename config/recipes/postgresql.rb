@@ -36,20 +36,18 @@ namespace :pg do
     run %Q{#{sudo} -u postgres psql -c "drop user #{postgresql_user};"}
   end
 
-  # Migrate the database with each deployment
-  # after  'deploy:update_code', 'deploy:migrate'
-
-
   desc "Symlink the database.yml file into latest release"
   task :symlink, roles: :app do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   end
   after "deploy:finalize_update", "pg:symlink"
 
+  # Migrate the database with each deployment
   desc "reload the database with seed data"
   task :seed do
     run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=#{rails_env}"
   end
+  after  'deploy:update_code', 'deploy:migrate'
   
   desc "tail production log files" 
   task :tail_logs, :roles => :app do
