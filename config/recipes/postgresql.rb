@@ -47,7 +47,7 @@ namespace :pg do
   task :seed do
     run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=#{rails_env}"
   end
-  after  'deploy:update_code', 'deploy:migrate'
+  after  'deploy:cold', 'deploy:migrate'
   
   desc "tail production log files" 
   task :tail_logs, :roles => :app do
