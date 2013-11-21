@@ -16,5 +16,5 @@ namespace :redis do
   task :symlink, roles: :app do
     run "ln -nfs #{shared_path}/config/redis.yml #{release_path}/config/redis.yml"
   end
-  after "deploy:finalize_update", "pg:symlink"
+  after "deploy:finalize_update", "redis:symlink"
 end
