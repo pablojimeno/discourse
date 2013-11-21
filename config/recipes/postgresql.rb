@@ -30,6 +30,12 @@ namespace :pg do
   end
   # after "deploy:setup", "pg:first_seed"
 
+  desc "Drop if database already exists."
+  task :drop_database, roles: :db, only: {primary: true} do
+    run %Q{#{sudo} -u postgres psql -c "drop database #{postgresql_database};"}
+    run %Q{#{sudo} -u postgres psql -c "drop user #{postgresql_user};"}
+  end
+
   # Migrate the database with each deployment
   after  'deploy:update_code', 'deploy:migrate'
 
