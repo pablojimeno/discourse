@@ -37,7 +37,7 @@ namespace :pg do
   end
 
   # Migrate the database with each deployment
-  after  'deploy:update_code', 'deploy:migrate'
+  # after  'deploy:update_code', 'deploy:migrate'
 
 
   desc "Symlink the database.yml file into latest release"
