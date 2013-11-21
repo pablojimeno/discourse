@@ -11,4 +11,10 @@ namespace :redis do
     template "redis.yml.erb", "#{shared_path}/config/redis.yml"
   end
   after "deploy:setup", "redis:setup"
+
+  desc "Symlink the redis.yml file into latest release"
+  task :symlink, roles: :app do
+    run "ln -nfs #{shared_path}/config/redis.yml #{release_path}/config/redis.yml"
+  end
+  after "deploy:finalize_update", "pg:symlink"
 end
