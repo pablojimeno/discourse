@@ -53,8 +53,8 @@ namespace :deploy do
     shared_secret  = "#{shared_path}/config/#{filename}"
     
     if capture("[ -f #{shared_secret} ] || echo missing").start_with?('missing')
-      run "cd #{current_path} && bundle exec rake secret", :env => { :RAILS_ENV => rails_env }
-      run "mkdir -p #{shared_path}/config; mv #{release_secret} #{shared_secret}"
+      rake_command "secret:replace"
+      run "mv #{release_secret} #{shared_secret}"
     end
     
     # symlink secret token
