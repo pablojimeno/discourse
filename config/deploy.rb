@@ -40,11 +40,6 @@ server '162.243.97.83', :web, :app, :db, primary: true
 set :application, 'discourse'
 set :deploy_to, "/home/#{user}/apps/#{application}"
 
-# Perform an initial bundle
-# after "deploy:setup" do
-#   run "cd #{current_path} && bundle install"
-# end
-
 namespace :deploy do
   desc "Moves and replaces the secret-token if missing in shared directory"
   task :symlink_secret, :roles => :app, :except => { :no_release => true } do 
@@ -61,5 +56,3 @@ namespace :deploy do
     run "ln -nfs #{shared_secret} #{release_secret}"
   end
 end
-  
-# after "deploy:update", "deploy:symlink_secret"
